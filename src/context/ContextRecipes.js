@@ -23,7 +23,7 @@ const RecipesProvider = (props) => {
             }
             getRecipes();
         }
-    }, [consultado]);
+    }, [consultado, category, ingredient]);
 
     return ( 
         <ContextRecipes.Provider

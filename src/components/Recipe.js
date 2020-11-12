@@ -58,14 +58,14 @@ const Recipe = ({recipe}) => {
                 <h2 className="card-header">
                     {recipe.strDrink}
                 </h2>
-                <img className="card-img-top" src={recipe.strDrinkThumb} alt={`Receta de ${recipe.strDrink}`} />
+                <img className="card-img-top" src={recipe.strDrinkThumb} alt={`${recipe.strDrink} recipe`} />
                 <div className="card-body">
                     <button type="button" 
                         className="btn btn-block btn-primary"
                         onClick={ () => {
                             setDrinkId(recipe.idDrink);
                             handleOpen();
-                        }}>Ver receta</button>
+                        }}>Show recipe</button>
 
                     <Modal
                         open={open}
@@ -76,9 +76,9 @@ const Recipe = ({recipe}) => {
                         }}>
                         <div style={modalStyle} className={classes.paper}>
                             <h2>{fullRecipe.strDrink}</h2>
-                            <h3 className="mt-4">Instrucciones</h3>
+                            <h3 className="mt-4">Instructions</h3>
                             <p>{fullRecipe.strInstructions}</p>
-                            <img className="img-fluid my-4" src={fullRecipe.strDrinkThumb} />
+                            <img className="img-fluid my-4" src={fullRecipe.strDrinkThumb} alt={fullRecipe.strDrink} />
 
                             <h3>Ingredients and Quantities</h3>
                             <ul>

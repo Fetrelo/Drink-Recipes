@@ -10,6 +10,7 @@ const Formulario = () => {
     });
     const {categories} = useContext(ContextCategories);
     const {setRecipesSearchData, setConsultado} = useContext(ContextRecipes);
+    const [error, setError] = useState(false);
 
     // Function to read the contents
     const handleChange = evt => {
@@ -23,11 +24,18 @@ const Formulario = () => {
         <form className="col-12"
             onSubmit={ evt => {
                 evt.preventDefault();
+
+                if(search.ingredient.trim() === '' || search.category.trim() === '') {
+                    setError(true);
+                    return;
+                }
+                setError(false);
                 setRecipesSearchData(search);
                 setConsultado(true);
             }}>
             <fieldset className="text-center">
-                <legend>Busca bebidas por categoría o ingrediente</legend>
+                <legend>Search drinks by main ingredient and its category</legend>
+                { error ? (<p className="alert alert-primary text-center">Both ingredient and category values must be provided</p>) : null}
                 <div className="row mt-4">
                     <div className="col-md-4">
                         <input
